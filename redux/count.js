@@ -9,5 +9,7 @@ function countReducer(count = 0, action) {
 	switch (action.type) {
 		case 'CHANGE_COUNT':
 			return count + action.data;
+		default:
+			return count;
 	}
 }
