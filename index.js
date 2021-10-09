@@ -29,6 +29,24 @@ function setYoutubeTitle(title) {
 	};
 }
 
+function upvoteYoutubeVideo() {
+	return {
+		type: 'UPVOTE_YOUTUBE_VIDEO',
+	};
+}
+
+function downvoteYoutubeVideo() {
+	return {
+		type: 'DOWNVOTE_YOUTUBE_VIDEO',
+	};
+}
+
+function increaseViewCount() {
+	return {
+		type: 'INCREASE_VIEWCOUNT',
+	};
+}
+
 const initialState = {
 	count: 0,
 	favoriteThings: [],
@@ -42,7 +60,7 @@ const initialState = {
 	},
 };
 
-console.log('initialState', initalState);
+// console.log('initialState', initialState);
 
 // 2. Reducer to handle these actions
 function reducer(state = initialState, action) {
@@ -74,6 +92,36 @@ function reducer(state = initialState, action) {
 					title: action.data,
 				},
 			};
+		case 'UPVOTE_YOUTUBE_VIDEO':
+			return {
+				...state,
+				youtubeVideo: {
+					...state.youtubeVideo,
+					votes: {
+						...state.youtubeVideo.votes,
+						up: state.youtubeVideo.votes.up + 1,
+					},
+				},
+			};
+		case 'DOWNVOTE_YOUTUBE_VIDEO':
+			return {
+				...state,
+				youtubeVideo: {
+					...state.youtubeVideo,
+					votes: {
+						...state.youtubeVideo.votes,
+						down: state.youtubeVideo.votes.down + 1,
+					},
+				},
+			};
+		case 'INCREASE_VIEWCOUNT':
+			return {
+				...state,
+				youtubeVideo: {
+					...state.youtubeVideo,
+					viewCount: state.youtubeVideo.viewCount + 1,
+				},
+			};
 		default:
 			return state;
 	}
@@ -85,7 +133,10 @@ store.subscribe(() => {
 	console.log(store.getState());
 });
 
-store.dispatch(changeCount(5));
-store.dispatch(addFavoriteThing('Gorons'));
-store.dispatch(addFavoriteThing('Zora'));
 store.dispatch(setYoutubeTitle('React Redux Tutorial'));
+store.dispatch(upvoteYoutubeVideo());
+store.dispatch(upvoteYoutubeVideo());
+store.dispatch(upvoteYoutubeVideo());
+store.dispatch(upvoteYoutubeVideo());
+store.dispatch(downvoteYoutubeVideo());
+store.dispatch(increaseViewCount());
