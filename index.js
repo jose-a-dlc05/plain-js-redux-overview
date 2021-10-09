@@ -1,52 +1,5 @@
 const redux = require('redux');
 
-// 1. Action creators for changing count
-function changeCount(amount) {
-	return {
-		type: 'CHANGE_COUNT',
-		data: amount,
-	};
-}
-
-function addFavoriteThing(thing) {
-	return {
-		type: 'ADD_FAVORITE_THING',
-		data: thing,
-	};
-}
-
-function removeFavoriteThing(thing) {
-	return {
-		type: 'REMOVE_FAVORITE_THING',
-		data: thing,
-	};
-}
-
-function setYoutubeTitle(title) {
-	return {
-		type: 'SET_YOUTUBE_TITLE',
-		data: title,
-	};
-}
-
-function upvoteYoutubeVideo() {
-	return {
-		type: 'UPVOTE_YOUTUBE_VIDEO',
-	};
-}
-
-function downvoteYoutubeVideo() {
-	return {
-		type: 'DOWNVOTE_YOUTUBE_VIDEO',
-	};
-}
-
-function increaseViewCount() {
-	return {
-		type: 'INCREASE_VIEWCOUNT',
-	};
-}
-
 const initialState = {
 	count: 0,
 	favoriteThings: [],
