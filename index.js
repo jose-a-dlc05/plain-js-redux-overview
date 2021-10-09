@@ -22,10 +22,27 @@ function removeFavoriteThing(thing) {
 	};
 }
 
+function setYoutubeTitle(title) {
+	return {
+		type: 'SET_YOUTUBE_TITLE',
+		data: title,
+	};
+}
+
 const initialState = {
 	count: 0,
 	favoriteThings: [],
+	youtubeVideo: {
+		title: '',
+		viewCount: 0,
+		votes: {
+			up: 0,
+			down: 0,
+		},
+	},
 };
+
+console.log('initialState', initalState);
 
 // 2. Reducer to handle these actions
 function reducer(state = initialState, action) {
@@ -49,6 +66,14 @@ function reducer(state = initialState, action) {
 				...state,
 				favoriteThings: updatedArr,
 			};
+		case 'SET_YOUTUBE_TITLE':
+			return {
+				...state,
+				youtubeVideo: {
+					...state.youtubeVideo,
+					title: action.data,
+				},
+			};
 		default:
 			return state;
 	}
@@ -63,4 +88,4 @@ store.subscribe(() => {
 store.dispatch(changeCount(5));
 store.dispatch(addFavoriteThing('Gorons'));
 store.dispatch(addFavoriteThing('Zora'));
-store.dispatch(removeFavoriteThing('Zora'));
+store.dispatch(setYoutubeTitle('React Redux Tutorial'));
