@@ -4,8 +4,7 @@ export function changeCount(amount) {
 		data: amount,
 	};
 }
-
-export default function countReducer(count = 0, action) {
+function countReducer(count = 0, action) {
 	switch (action.type) {
 		case 'CHANGE_COUNT':
 			return count + action.data;
@@ -13,3 +12,5 @@ export default function countReducer(count = 0, action) {
 			return count;
 	}
 }
+
+export default countReducer;

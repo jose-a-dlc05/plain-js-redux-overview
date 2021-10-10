@@ -1,9 +1,17 @@
-const redux = require('redux');
-const { combineReducer, createStore } = redux;
+import redux from 'redux';
+const { combineReducers, createStore } = redux;
 import countReducer from './count';
-import favoriteThingsReducer from './favoriteThings';
-import youTubeReducer from './youTubeVideo';
-// import the separate reducers
-// combine the reducers into a single state tree
-// create the store
-// export the store
+const favoriteThingsReducer = require('./favoriteThings');
+const youTubeVideoReducer = require('./youTubeVideo');
+
+const rootReducer = combineReducers({
+	count: countReducer,
+	favoriteThings: favoriteThingsReducer,
+	youTubeVideo: youTubeVideoReducer,
+});
+
+const store = createStore(rootReducer);
+store.subscribe(() => {
+	console.log(store.getState());
+});
+export default store;

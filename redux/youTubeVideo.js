@@ -32,7 +32,10 @@ const initialState = {
 	},
 };
 
-export default function youTubeReducer(youTubeVideo = initialState, action) {
+export default function youTubeVideoReducer(
+	youTubeVideo = initialState,
+	action
+) {
 	switch (action.type) {
 		case 'SET_YOUTUBE_TITLE':
 			return {

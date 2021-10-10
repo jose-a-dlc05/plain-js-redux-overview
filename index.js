@@ -1,6 +1,7 @@
-const redux = require('redux');
+import store from './redux/index.js';
+const { changeCount } = require('./redux/count');
 
-const store = redux.createStore(reducer);
-store.subscribe(() => {
-	console.log(store.getState());
-});
+store.dispatch(changeCount(42));
+
+// Need to fix importing modules issue
+// Create action creator to setUserDetails and removeUserDetails in a user object
