@@ -1,23 +1,23 @@
-function setYoutubeTitle(title) {
+export function setYoutubeTitle(title) {
 	return {
 		type: 'SET_YOUTUBE_TITLE',
 		data: title,
 	};
 }
 
-function upvoteYoutubeVideo() {
+export function upvoteYoutubeVideo() {
 	return {
 		type: 'UPVOTE_YOUTUBE_VIDEO',
 	};
 }
 
-function downvoteYoutubeVideo() {
+export function downvoteYoutubeVideo() {
 	return {
 		type: 'DOWNVOTE_YOUTUBE_VIDEO',
 	};
 }
 
-function increaseViewCount() {
+export function increaseViewCount() {
 	return {
 		type: 'INCREASE_VIEWCOUNT',
 	};
@@ -32,7 +32,7 @@ const initialState = {
 	},
 };
 
-function youTubeReducer(youTubeVideo = initialState, action) {
+export default function youTubeReducer(youTubeVideo = initialState, action) {
 	switch (action.type) {
 		case 'SET_YOUTUBE_TITLE':
 			return {
